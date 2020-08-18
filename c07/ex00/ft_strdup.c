@@ -1,40 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ehong <ehong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/18 13:30:19 by ehong             #+#    #+#             */
+/*   Updated: 2020/08/18 13:30:20 by ehong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
 int			ft_strlen(char *str)
 {
 	int		i;
-	
+
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-char		ft_strcpy(char *dest, char *src)
-{
-	int		i;
-	char	temp;
-	int		j;
-
-	i = 0;
-	j = ft_strlen(src);
-	while (dest[i] != '\0' && i < j)
-	{
-		temp = src[j];
-		src[j] = dest[i];
-		dest[i] = temp;
-		i++;
-		j--;
-	}
-	return (dest);
-}
-
 char		*ft_strdup(char *src)
 {
-	char *str;
-	int	len;
+	int		i;
+	char	*res;
 
-	*str = malloc(ft_strlen(src) + 1);
-	if (str == NULL)
-		return (NULL);
-	strcpy(str, src);
-	return (str);
+	i = ft_strlen(src);
+	res = (char *)malloc(sizeof(char) * i);
+	i = 0;
+	while (src[i])
+	{
+		res[i] = src[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
